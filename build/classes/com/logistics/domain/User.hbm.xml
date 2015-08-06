@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-19 17:33:20 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.logistics.domain.User" table="user" catalog="logistics">
+        <id name="uid" type="int">
+            <column name="uid" />
+            <generator class="assigned" />
+        </id>
+        <property name="uname" type="string">
+            <column name="uname" length="20" not-null="true" />
+        </property>
+        <property name="upassword" type="string">
+            <column name="upassword" length="20" not-null="true" />
+        </property>
+        <property name="rid" type="java.lang.Integer">
+            <column name="rid" />
+        </property>
+    </class>
+</hibernate-mapping>

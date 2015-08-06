@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-19 17:33:20 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.logistics.domain.Otherbill" table="otherbill" catalog="logistics">
+        <id name="oid" type="int">
+            <column name="oid" />
+            <generator class="assigned" />
+        </id>
+        <property name="odate" type="date">
+            <column name="odate" length="10" not-null="true" />
+        </property>
+        <property name="ocompany" type="string">
+            <column name="ocompany" length="10" />
+        </property>
+        <property name="obiz" type="string">
+            <column name="obiz" length="10" />
+        </property>
+        <property name="oquantity" type="string">
+            <column name="oquantity" length="10" />
+        </property>
+        <property name="oreason" type="string">
+            <column name="oreason" length="20" />
+        </property>
+        <property name="oprofit" type="int">
+            <column name="oprofit" not-null="true" />
+        </property>
+        <property name="obroker" type="string">
+            <column name="obroker" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

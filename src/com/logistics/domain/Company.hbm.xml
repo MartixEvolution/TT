@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-19 17:33:20 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.logistics.domain.Company" table="company" catalog="logistics">
+        <id name="cid" type="int">
+            <column name="cid" />
+            <generator class="assigned" />
+        </id>
+        <property name="cname" type="string">
+            <column name="cname" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

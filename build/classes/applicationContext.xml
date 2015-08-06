@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                      http://www.springframework.org/schema/aop
+                      http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                      http://www.springframework.org/schema/tx
+                      http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	<!-- 设置需要加载并读取的数据库连接池属性文件的位置 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:proxool_mysql.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 设置Proxool数据库连接池 -->
+	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="${jdbc.alias}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="driver" value="${jdbc.driverClassName}" />
+		<property name="driverUrl" value="${jdbc.url}" />
+		<property name="prototypeCount" value="${jdbc.prototypeCount}" />
+		<property name="maximumConnectionCount" value="${jdbc.maximumConnectionCount}" />
+		<property name="minimumConnectionCount" value="${jdbc.minimumConnectionCount}" />
+	</bean>
+
+	<!-- 设置sessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 引用hibernate皇家的核心配置文件 -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	<!--设置dao层 -->
+	<bean id="userDao" class="com.logistics.dao.impl.UserDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="dailybillDao" class="com.logistics.dao.impl.DailybillDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="bizlistDao" class="com.logistics.dao.impl.BizlistDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="otherbillDao" class="com.logistics.dao.impl.OtherbillDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="transportDao" class="com.logistics.dao.impl.TransportDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="companyDao" class="com.logistics.dao.impl.CompanyDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="trackDao" class="com.logistics.dao.impl.TrackDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!--这只Service层 -->
+	<bean id="userService" class="com.logistics.service.impl.UserServiceImpl">
+		<property name="userDao">
+			<ref bean="userDao" />
+		</property>
+	</bean>
+	<bean id="bizlistService" class="com.logistics.service.impl.BizlistServiceImpl">
+		<property name="bizlistDao">
+			<ref bean="bizlistDao" />
+		</property>
+	</bean>
+	<bean id="dailybillService" class="com.logistics.service.impl.DailybillServiceImpl">
+		<property name="dailybillDao">
+			<ref bean="dailybillDao" />
+		</property>
+	</bean>
+	<bean id="otherbillService" class="com.logistics.service.impl.OtherbillServiceImpl">
+		<property name="otherbillDao">
+			<ref bean="otherbillDao" />
+		</property>
+	</bean>
+	<bean id="transportService" class="com.logistics.service.impl.TransportServiceImpl">
+		<property name="transportDao">
+			<ref bean="transportDao" />
+		</property>
+	</bean>
+	<bean id="companyService" class="com.logistics.service.impl.CompanyServiceImpl">
+		<property name="companyDao">
+			<ref bean="companyDao" />
+		</property>
+	</bean>
+	<bean id="trackService" class="com.logistics.service.impl.TrackServiceImpl">
+		<property name="trackDao">
+			<ref bean="trackDao" />
+		</property>
+	</bean>
+	<!--设置Action层 -->
+	<bean id="userAction" class="com.logistics.action.UserAction">
+		<property name="userService">
+			<ref bean="userService" />
+		</property>
+		<property name="user">
+			<ref bean="user" />
+		</property>
+	</bean>
+	<bean id="bizlistAction" class="com.logistics.action.BizlistAction">
+		<property name="bizlistService">
+			<ref bean="bizlistService" />
+		</property>
+		<property name="bizlist">
+			<ref bean="bizlist" />
+		</property>
+	</bean>
+	<bean id="dailybillAction" class="com.logistics.action.DailybillAction">
+		<property name="dailybillService">
+			<ref bean="dailybillService" />
+		</property>
+		<property name="dailybill">
+			<ref bean="dailybill" />
+		</property>
+	</bean>
+	<bean id="otherbillAction" class="com.logistics.action.OtherbillAction">
+		<property name="otherbillService">
+			<ref bean="otherbillService" />
+		</property>
+		<property name="otherbill">
+			<ref bean="otherbill" />
+		</property>
+	</bean>
+	<bean id="transportAction" class="com.logistics.action.TransportAction">
+		<property name="transportService">
+			<ref bean="transportService" />
+		</property>
+		<property name="transport">
+			<ref bean="transport" />
+		</property>
+	</bean>
+	<bean id="companyAction" class="com.logistics.action.CompanyAction">
+		<property name="companyService">
+			<ref bean="companyService" />
+		</property>
+		<property name="company">
+			<ref bean="company" />
+		</property>
+	</bean>
+	<bean id="trackAction" class="com.logistics.action.TrackAction">
+		<property name="trackService">
+			<ref bean="trackService" />
+		</property>
+		<property name="track">
+			<ref bean="track" />
+		</property>
+		
+	</bean>
+	<!-- 设置domain层 -->
+	<bean id="track" class="com.logistics.domain.Track"></bean>
+	<bean id="company" class="com.logistics.domain.Company"></bean>
+	<bean id="transport" class="com.logistics.domain.Transport"></bean>
+	<bean id="otherbill" class="com.logistics.domain.Otherbill" />
+	<bean id="dailybill" class="com.logistics.domain.Dailybill" />
+	<bean id="user" class="com.logistics.domain.User" />
+	<bean id="bizlist" class="com.logistics.domain.Bizlist" />
+</beans>

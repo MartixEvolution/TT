@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="logistics" match-name="bizlist"/>
+  <table-filter match-catalog="logistics" match-name="company"/>
+  <table-filter match-catalog="logistics" match-name="dailybill"/>
+  <table-filter match-catalog="logistics" match-name="otherbill"/>
+  <table-filter match-catalog="logistics" match-name="role"/>
+  <table-filter match-catalog="logistics" match-name="track"/>
+  <table-filter match-catalog="logistics" match-name="transport"/>
+  <table-filter match-catalog="logistics" match-name="user"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-19 17:33:20 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.logistics.domain.Transport" table="transport" catalog="logistics">
+        <id name="tid" type="int">
+            <column name="tid" />
+            <generator class="assigned" />
+        </id>
+        <property name="tno" type="string">
+            <column name="tno" length="20" />
+        </property>
+        <property name="tname" type="string">
+            <column name="tname" length="20" />
+        </property>
+        <property name="taddr" type="string">
+            <column name="taddr" length="20" />
+        </property>
+        <property name="tlxt" type="string">
+            <column name="tlxt" length="20" />
+        </property>
+        <property name="tlxdh" type="string">
+            <column name="tlxdh" length="20" />
+        </property>
+        <property name="tchdh" type="string">
+            <column name="tchdh" length="20" />
+        </property>
+        <property name="tprice" type="java.lang.Double">
+            <column name="tprice" />
+        </property>
+        <property name="tzxf" type="java.lang.Double">
+            <column name="tzxf" />
+        </property>
+        <property name="tshf" type="java.lang.Double">
+            <column name="tshf" />
+        </property>
+        <property name="tthf" type="java.lang.Double">
+            <column name="tthf" />
+        </property>
+        <property name="tcbf" type="java.lang.Double">
+            <column name="tcbf" />
+        </property>
+        <property name="tthch" type="string">
+            <column name="tthch" length="20" />
+        </property>
+        <property name="tthr" type="string">
+            <column name="tthr" length="20" />
+        </property>
+        <property name="tsjdh" type="string">
+            <column name="tsjdh" length="20" />
+        </property>
+        <property name="tthcb" type="string">
+            <column name="tthcb" length="20" />
+        </property>
+        <property name="tgsdh" type="string">
+            <column name="tgsdh" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

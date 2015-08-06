@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- false -->
+    <constant name="struts.devMode" value="false" /> 
+    <!-- struts中的action由spring进行托管-->
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+        <global-results>
+            <result name="error">/form/fail.jsp</result>
+            <result name="input">/form/fail.jsp</result>
+        </global-results> 
+
+        <action name="*_add" class="{1}Action" method="add">
+           <result name="success">/jsp/success.jsp</result>  
+        </action>
+        <!--  
+         <action name="bizlist_add" class="bizlistAction" method="add">
+           <result name="success">/form/success.jsp</result>  
+        </action>
+        <action name="dailybill_add" class="dailybillAction" method="add">
+           <result name="success">/form/success.jsp</result> 
+           <result name="error">/form/fail.jsp</result>  
+        </action>
+        <action name="otherbill_add" class="otherbillAction" method="add">
+           <result name="success">/form/success.jsp</result> 
+           <result name="error">/form/fail.jsp</result>  
+        </action>
+         <action name="transport_add" class="transportAction" method="add">
+           <resu lt name="success">/form/success.jsp</result> 
+           <result name="error">/form/fail.jsp</result>  
+        </action>
+        -->
+	<action name="bizlist_findall" class="bizlistAction" method="findAll">
+	 <!-- 	<result name="success">/jsp/bizlists.jsp</result>-->
+		<result name="success">/jsp/bizlists_list.jsp</result>  
+		<result name="error">/form/fail.jsp</result>
+	</action>
+	<action name="bizlist_findorder" class="bizlistAction" method="findOrder">
+		<result name="success">/jsp/track.jsp</result>
+		<result name="error">/form/fail.jsp</result>
+	</action>
+	<action name="bizlist_search" class="bizlistAction" method="search">
+		<result name="success">/jsp/bizlists.jsp</result>
+		<result name="error">/form/fail.jsp</result>
+	</action>
+	<action name="company_findall" class="companyAction" method="findAll">
+		<result name="success">/jsp/company.jsp</result>
+		<result name="error">/form/fail.jsp</result>
+	</action>
+	<action name="bizlist_delete" class="bizlistAction" method="bizlist_delete">
+		<result name="success">/jsp/bizlists.jsp</result>
+		<result name="error">/form/fail.jsp</result>
+	</action>
+	
+	<action name="bizlist_edit" class="bizlistAction" method="bizlist_edit">
+		<result name="success">/jsp/bizlists.jsp</result>
+		<result name="error">/form/fail.jsp</result>
+	</action>
+	
+	
+        
+    </package>
+
+    <include file="example.xml"/>
+
+    <!-- Add packages here -->
+     <!--         <result type="redirectAction">
+                <param name="actionName">HelloWorld</param>
+                <param name="namespace">/example</param>
+            </result>
+            -->
+
+</struts>

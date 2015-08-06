@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-7-19 17:33:20 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.logistics.domain.Bizlist" table="bizlist" catalog="logistics">
+        <id name="bid" type="int">
+            <column name="bid" />
+            <generator class="assigned" />
+        </id>
+        <property name="orderno" type="string">
+            <column name="orderno" length="20" not-null="true" />
+        </property>
+        <property name="clientno" type="string">
+            <column name="clientno" length="50" />
+        </property>
+        <property name="companyname" type="string">
+            <column name="companyname" length="20" />
+        </property>
+        <property name="startdate" type="date">
+            <column name="startdate" length="10" />
+        </property>
+        <property name="number" type="java.lang.Integer">
+            <column name="number" />
+        </property>
+        <property name="quantity" type="java.lang.Double">
+            <column name="quantity" precision="10" scale="0" />
+        </property>
+        <property name="unit" type="string">
+            <column name="unit" length="10" />
+        </property>
+        <property name="startlocation" type="string">
+            <column name="startlocation" length="20" />
+        </property>
+        <property name="endcompany" type="string">
+            <column name="endcompany" length="50" />
+        </property>
+        <property name="channel" type="string">
+            <column name="channel" length="20" />
+        </property>
+        <property name="endlocation" type="string">
+            <column name="endlocation" length="50" />
+        </property>
+        <property name="receiver" type="string">
+            <column name="receiver" length="20" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="20" />
+        </property>
+        <property name="totalfee" type="java.lang.Double">
+            <column name="totalfee" />
+        </property>
+    </class>
+</hibernate-mapping>
